@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College issue tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        h2 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #010101;
+        }
+        th {
+            background-color: #64cbfb;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>COLLEGE ISSUE TRACKER</h2>
+  <a th:href = "@{/create}"> Add Issue </a>
+    <table>
+        <tr>
+            <th>Issue ID</th>
+            <th>Issue Name</th>
+            <th>Issue Description</th>
+            <th>Department</th>
+            <th>Issue Status</th>
+            <th>Action</th>
+        </tr>
+    <tbody>
+       <tr th:each="Studentdb1 : ${newList}">
+           <td th:text="${Studentdb1.Issueid}"></td>
+           <td th:text="${Studentdb1.Issuename}"></td>
+           <td th:text="${Studentdb1.IssueDescription}"></td>
+           <td th:text="${Studentdb1.Department}"></td>
+          <td th:text="${Studentdb1.Issuestatus}"></td>
+          <td>
+             <a class="edit-button" th:href="@{'/edit/' + ${Studentdb1.Issueid}}">EDIT</a>
+             <a class="delete-button" th:href="@{'/delete/' + ${Studentdb1.Issueid}}">DELETE</a>
+           </td>
+       </tr>
+   </tbody>    
+    </table>
+</body>
+</html>
